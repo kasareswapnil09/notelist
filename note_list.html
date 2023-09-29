@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Note List</title>
+    <style>
+        /* Style the page container */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Style the header */
+        h1 {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Style the list of notes */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        /* Style the links */
+        a {
+            text-decoration: none;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style the "Create a new note" button */
+        .create-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Style the "No notes available" message */
+        .no-notes-message {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Note List</h1>
+    <ul>
+        {% for note in notes %}
+            <li><a href="{% url 'note_detail' note.pk %}">{{ note.title }}</a></li>
+        {% empty %}
+            <li class="no-notes-message">No notes available.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'create_note' %}" class="create-button">Create a new note</a>
+</body>
+</html>

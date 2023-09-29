@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Note Detail</title>
+    <style>
+        /* Define CSS styles for the table */
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto; /* Center the table on the page */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the buttons */
+        .crud-buttons button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            margin-right: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Style the buttons on hover */
+        .crud-buttons button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Note Detail</h1>
+    <table>
+        <tr>
+            <th>Title</th>
+            <td>{{ note.title }}</td>
+        </tr>
+        <tr>
+            <th>Content</th>
+            <td>{{ note.content }}</td>
+        </tr>
+    </table>
+    <div class="crud-buttons">
+        <button onclick="window.location.href='{% url 'edit_note' note.pk %}'">Edit</button>
+        <button onclick="window.location.href='{% url 'delete_note' note.pk %}'">Delete</button>
+        <button onclick="window.location.href='{% url 'note_list' %}'">Back to List</button>
+    </div>
+</body>
+</html>
